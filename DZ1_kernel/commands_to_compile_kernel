@@ -1,0 +1,59 @@
+    1  yum install wget
+    2  wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.2.5.tar.xz
+    3  ll
+    4  tar -xJf linux-5.2.5.tar.xz 
+    5  ll
+    6  cd linux-5.2.5/
+    7  ll
+    8  cp -v /boot/config-3.10.0-957.12.2.el7.x86_64 .cocciconfig 
+    9  cp -v /boot/config-3.10.0-957.12.2.el7.x86_64 .config
+   10  yum update
+   11  yum install -y ncurses-devel make gcc bc bison flex elfutils-libelf-devel openssl-devel grub2
+   12  make oldconfig
+   13  make
+   14  yum install perl
+   15  make
+   16  make modules_install && make install
+   17  uname -r | tee /home/vagrant/before_kern
+   18  reboot
+   19  uname -r
+   20  ll /boot/
+   21  cd linux-5.2.5/
+   22  ll
+   23  cd ,,
+   24  cd ..
+   25  ll
+   26  cd linux-5.2.5/
+   27  ll
+   28  make rpm-pkg
+   29  yum install rpm-build
+   30  make rpm-pkg
+   31  ll
+   32  ll /root/rpmbuild/BUILDROOT/
+   33  ll /root/rpmbuild/
+   34  ll /root/rpmbuild/RPMS/
+   35  ll /root/rpmbuild/RPMS/x86_64/
+   36  rpm -iUv /root/rpmbuild/RPMS/x86_64/*.rpm
+   37  rpm -qa | grep kernel
+   38  reboot
+   39  rpm -qa | grep kernel
+   40  uname -r
+   41  ll
+   42  cd linux-5.2.5/
+   43  ll
+   44  ll .config
+   45  less .config
+   46  mkdir /home/vagrant/DZ1_kernel
+   47  cp ./.config /home/vagrant/DZ1_kernel/
+   48  cp -r /root/rpmbuild/RPMS/x86_64/ /home/vagrant/DZ1_kernel/
+   49  ll
+   50  ll /home/vagrant/before_kern 
+   51  cat /home/vagrant/before_kern 
+   52  uname -r
+   53  history | less
+   54  less /var/log/yum.log 
+   55  history
+   56  history > /home/vagrant/DZ1_kernel/commands_to_compile_kernel
+   57  less /home/vagrant/DZ1_kernel/commands_to_compile_kernel 
+   58  uname -r > /home/vagrant/DZ1_kernel/kernel_after
+   59  history > /home/vagrant/DZ1_kernel/commands_to_compile_kernel

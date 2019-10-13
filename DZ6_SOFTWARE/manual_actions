@@ -1,0 +1,177 @@
+# Создал репозиторий как в примере, положил туда пакет percona и свой собранный
+
+[root@otuslinux SPECS]# mkdir /usr/share/nginx/html/repo
+[root@otuslinux SPECS]# cp ../RPMS/x86_64/otus_ps_ax-1-0.x86_64.rpm /usr/share/nginx/html/repo/
+[root@otuslinux SPECS]# wget http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm -O /usr/share/nginx/html/repo/percona-release-0.1-6.noarch.rpm
+--2019-10-13 15:39:13--  http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm
+
+
+[root@otuslinux SPECS]# ll /usr/share/nginx/html/repo/
+total 20
+-rw-r--r--. 1 root root  2856 окт 13 15:37 otus_ps_ax-1-0.x86_64.rpm
+-rw-r--r--. 1 root root 14520 июн 13  2018 percona-release-0.1-6.noarch.rpm
+
+
+[root@otuslinux SPECS]# createrepo /usr/share/nginx/html/repo/
+Spawning worker 0 with 2 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+
+
+# проверил что репозиторий с двумя пакетами доступен из браузера
+
+lynx http://localhost/repo
+
+                                                                                      Index of /repo/
+                                           Index of /repo/
+     _______________________________________________________________________________________
+
+../
+repodata/                                          13-Oct-2019 15:39                   -
+otus_ps_ax-1-0.x86_64.rpm                          13-Oct-2019 15:37                2856
+percona-release-0.1-6.noarch.rpm                   13-Jun-2018 06:34               14520
+     _______________________________________________________________________________________
+
+
+
+# добавил репозиторий в конфиг yum
+
+[root@otuslinux SPECS]# cat >> /etc/yum.repos.d/otus.repo << EOF
+> [otus]
+> name=otus-linux
+> baseurl=http://localhost/repo
+> gpgcheck=0
+> enabled=1
+> EOF
+
+[root@otuslinux SPECS]# yum repolist enabled | grep otus
+otus                otus-linux                                                 2
+
+[root@otuslinux SPECS]# yum repolist enabled | grep otus
+otus                otus-linux                                                 2
+[root@otuslinux SPECS]# yum list | grep otus
+otus_ps_ax.x86_64                         1-0                            installed
+percona-release.noarch                    0.1-6                          otus   
+
+
+# проверил что из него ставится пакет
+[root@otuslinux SPECS]# yum install percona-release -y
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.logol.ru
+ * epel: fedora-mirror02.rbc.ru
+ * extras: mirror.logol.ru
+ * updates: mirror.logol.ru
+Resolving Dependencies
+--> Running transaction check
+---> Package percona-release.noarch 0:0.1-6 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=====================================================================================================
+ Package                        Arch                  Version              Repository           Size
+=====================================================================================================
+Installing:
+ percona-release                noarch                0.1-6                otus                 14 k
+
+Transaction Summary
+=====================================================================================================
+Install  1 Package
+
+Total download size: 14 k
+Installed size: 16 k
+Downloading packages:
+percona-release-0.1-6.noarch.rpm                                              |  14 kB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : percona-release-0.1-6.noarch                                                      1/1 
+  Verifying  : percona-release-0.1-6.noarch                                                      1/1 
+
+Installed:
+  percona-release.noarch 0:0.1-6                                                                     
+
+Complete!
+
+
+# попробовал удалить и поставить свой пакет
+[root@otuslinux SPECS]# yum remove -y otus_ps_ax.x86_64
+Loaded plugins: fastestmirror
+Resolving Dependencies
+--> Running transaction check
+---> Package otus_ps_ax.x86_64 0:1-0 will be erased
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=====================================================================================================
+ Package                   Arch                  Version              Repository                Size
+=====================================================================================================
+Removing:
+ otus_ps_ax                x86_64                1-0                  installed                1.5 k
+
+Transaction Summary
+=====================================================================================================
+Remove  1 Package
+
+Installed size: 1.5 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Erasing    : otus_ps_ax-1-0.x86_64                                                             1/1 
+  Verifying  : otus_ps_ax-1-0.x86_64                                                             1/1 
+
+Removed:
+  otus_ps_ax.x86_64 0:1-0                                                                            
+
+Complete!
+[root@otuslinux SPECS]# yum install -y otus_ps_ax.x86_64
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.logol.ru
+ * epel: fedora-mirror02.rbc.ru
+ * extras: mirror.logol.ru
+ * updates: mirror.logol.ru
+Resolving Dependencies
+--> Running transaction check
+---> Package otus_ps_ax.x86_64 0:1-0 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=====================================================================================================
+ Package                    Arch                   Version                Repository            Size
+=====================================================================================================
+Installing:
+ otus_ps_ax                 x86_64                 1-0                    otus                 2.8 k
+
+Transaction Summary
+=====================================================================================================
+Install  1 Package
+
+Total download size: 2.8 k
+Installed size: 1.5 k
+Downloading packages:
+otus_ps_ax-1-0.x86_64.rpm                                                     | 2.8 kB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : otus_ps_ax-1-0.x86_64                                                             1/1 
+  Verifying  : otus_ps_ax-1-0.x86_64                                                             1/1 
+
+Installed:
+  otus_ps_ax.x86_64 0:1-0                                                                            
+
+Complete!
+
+

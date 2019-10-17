@@ -1,0 +1,96 @@
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+
+MACHINES = {
+  :otuslinux => {
+        :box_name => "centos/7",
+        :ip_addr => '192.168.11.101',
+	:disks => {
+		:sata1 => {
+			:dfile => './sata1.vdi',
+			:size => 250,
+			:port => 1
+		},
+		:sata2 => {
+                        :dfile => './sata2.vdi',
+                        :size => 250, # Megabytes
+			:port => 2
+		},
+                :sata3 => {
+                        :dfile => './sata3.vdi',
+                        :size => 250,
+                        :port => 3
+                },
+                :sata4 => {
+                        :dfile => './sata4.vdi',
+                        :size => 250, # Megabytes
+                        :port => 4
+                }
+
+	}
+
+		
+  },
+}
+
+Vagrant.configure("2") do |config|
+
+  MACHINES.each do |boxname, boxconfig|
+
+      config.vm.define boxname do |box|
+
+          box.vm.box = boxconfig[:box_name]
+          box.vm.host_name = boxname.to_s
+
+          #box.vm.network "forwarded_port", guest: 3260, host: 3260+offset
+
+          box.vm.network "private_network", ip: boxconfig[:ip_addr]
+
+          box.vm.provider :virtualbox do |vb|
+            	  vb.customize ["modifyvm", :id, "--memory", "1024"]
+                  needsController = false
+		  boxconfig[:disks].each do |dname, dconf|
+			  unless File.exist?(dconf[:dfile])
+				vb.customize ['createhd', '--filename', dconf[:dfile], '--variant', 'Fixed', '--size', dconf[:size]]
+                                needsController =  true
+                          end
+
+		  end
+                  if needsController == true
+                     vb.customize ["storagectl", :id, "--name", "SATA", "--add", "sata" ]
+                     boxconfig[:disks].each do |dname, dconf|
+                         vb.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', dconf[:port], '--device', 0, '--type', 'hdd', '--medium', dconf[:dfile]]
+                     end
+                  end
+          end
+
+      config.vm.provision "file", source: "./test_login.sh", destination: "~/test_login.sh"
+	  config.vm.provision "file", source: "./normal_u2", destination: "~/normal_u2"
+
+ 	  box.vm.provision "shell", inline: <<-SHELL
+	      mkdir -p ~root/.ssh
+              cp ~vagrant/.ssh/auth* ~root/.ssh
+	      yum install -y mdadm smartmontools hdparm gdisk
+
+	      for pkg in epel-release pam_script; do yum install -y $pkg; done
+
+	      cp ./test_login.sh /usr/local/bin/test_login.sh
+
+	      useradd admin_u1 && sudo useradd admin_u2 && sudo useradd normal_u1 && sudo useradd normal_u2
+	      groupadd admins
+
+	      usermod -a -G admins admin_u1 && sudo usermod -a -G admins admin_u2
+	      echo "Otus2019"|sudo passwd --stdin admin_u1 && echo "Otus2019" | sudo passwd --stdin admin_u2  && echo "Otus2019" | sudo passwd --stdin normal_u1 && echo "Otus2019" | sudo passwd --stdin normal_u2
+	      sudo bash -c "sed -i 's/^PasswordAuthentication.*$/PasswordAuthentication yes/' /etc/ssh/sshd_config && systemctl restart sshd.service"
+  	  	  
+	      sudo bash -c "sed -i '/account    required     pam_nologin.so/a account    required     pam_script.so /usr/local/bin/test_login.sh' /etc/pam.d/sshd"
+
+
+  	  	  usermod -G wheel normal_u2
+  	  	  cp ./normal_u2 /etc/sudoers.d/normal_u2
+  	  SHELL
+
+      end
+  end
+end
+

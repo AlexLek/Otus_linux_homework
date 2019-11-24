@@ -1,0 +1,14 @@
+---
+- hosts: host1
+  become: true
+  gather_facts: false
+  tasks:
+
+  - name: Install pacakges
+    yum:
+      name:
+      - telnet
+      - vim
+      state: latest
+  roles:
+    - nginx

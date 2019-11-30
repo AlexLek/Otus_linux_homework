@@ -1,0 +1,226 @@
+Script started on Сб 30 ноя 2019 17:00:58
+]0;root@otuslinux:~[?1034h[root@otuslinux ~]# mkdir /usr/lib/dracut/modules.d/01test
+]0;root@otuslinux:~[root@otuslinux ~]# /usr/lib/dracut/modules.d/01test[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cc/usr/lib/dracut/modules.d/01test[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cd/usr/lib/dracut/modules.d/01test[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C /usr/lib/dracut/modules.d/01test[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+]0;root@otuslinux:/usr/lib/dracut/modules.d/01test[root@otuslinux 01test]# touch module-setup.sh
+]0;root@otuslinux:/usr/lib/dracut/modules.d/01test[root@otuslinux 01test]# touch module-setup.sh[1P[1P[1P[1P[1P module-setup.shc module-setup.shh module-setup.shm module-setup.sho module-setup.shd module-setup.sh[C module-setup.sh7 module-setup.sh5 module-setup.sh5 module-setup.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+]0;root@otuslinux:/usr/lib/dracut/modules.d/01test[root@otuslinux 01test]# chmod 755 module-setup.sh[4Ptouch[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P.sh[1P.sh[1P.sh[1P.sh[1P.sh[1P.sh[1P.sh[1P.sh[1P.sh[1P.sh[1P.sh[1P.sht.she.shs.sht.sh
+]0;root@otuslinux:/usr/lib/dracut/modules.d/01test[root@otuslinux 01test]# touch test.shchmod 755 module-setup.sh[12Ptouch test.sh[1P[1P[1P[1P[1P test.shv test.shi test.sh
+[?1049h[?1h=[1;45r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[45;1H"test.sh" 0L, 0C[2;1H[94m~                                                                                  [3;1H~                                                                                  [4;1H~                                                                                  [5;1H~                                                                                  [6;1H~                                                                                  [7;1H~                                                                                  [8;1H~                                                                                  [9;1H~                                                                                  [10;1H~                                                                                  [11;1H~                                                                                  [12;1H~                                                                                  [13;1H~                                                                                  [14;1H~                                                                                  [15;1H~                                                                                  [16;1H~                                                                                  [17;1H~                                                                                  [18;1H~                                                                                  [19;1H~                                                                                  [20;1H~                                                                                  [21;1H~                                                                                  [22;1H~                                                                                  [23;1H~                                                                                  [24;1H~                                                                                  [25;1H~                                                                                  [26;1H~                                                                                  [27;1H~                                                                                  [28;1H~                                                                                  [29;1H~                                                                                  [30;1H~                                                                                  [31;1H~                                                                                  [32;1H~                                                                                  [33;1H~                                                                                  [34;1H~                                                                                  [35;1H~                                                                                  [36;1H~                                                                                  [37;1H~                                                                                  [38;1H~                                                                                  [39;1H~                                                                                  [40;1H~                                                                                  [41;1H~                                                                                  [42;1H~                                                                                  [43;1H~                                                                                  [44;1H~                                                                                  [1;1H[?12l[?25h[?25l[m[45;1H[1m-- INSERT --[m[45;13H[K[1;1H[?12l[?25h[?25l#!/bin/bash[2;1H[K[3;1Hexec 0<>/dev/console 1<>/dev/console 2<>/dev/console[3;53H[K[4;1Hcat <<'msgend'[4;15H[K[5;1HHello! You are in dracut module![5;33H[K[6;1H ___________________[6;21H[K[7;1H< I'm dracut module >[7;22H[K[8;1H -------------------[8;21H[K[9;1H   \[9;5H[K[10;1H    \[10;6H[K[11;1H        .--.[11;13H[K[12;1H       |o_o |[12;14H[K[13;1H       |:_/ |[13;14H[K[14;1H      //   \ \[14;15H[K[15;1H     (|     | )[15;16H[K[16;1H    /'\_   _/`\[16;16H[K[17;1H    \___)=(___/[17;16H[K[18;1Hmsgend[18;7H[K[19;1Hsleep 10[19;9H[K[20;1Hecho " continuing...."[20;23H[K[20;23H[?12l[?25h[45;1H[K[20;22H[?25l[?12l[?25h[?25l[45;1H:[?12l[?25hwq[?25l"test.sh" 20L, 332C written
+[?1l>[?12l[?25h[?1049l]0;root@otuslinux:/usr/lib/dracut/modules.d/01test[root@otuslinux 01test]# vi test.sh[3@touch[C[C[C[C[C[C[C[Cchmod 755 module-setup.sh[1P[1P[1P[1P[1P[1P[1P[C[1P module-setup.sh[1P module-setup.shv module-setup.shi module-setup.sh
+[?1049h[?1h=[1;45r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[45;1H"module-setup.sh" 0L, 0C[2;1H[94m~                                                                                  [3;1H~                                                                                  [4;1H~                                                                                  [5;1H~                                                                                  [6;1H~                                                                                  [7;1H~                                                                                  [8;1H~                                                                                  [9;1H~                                                                                  [10;1H~                                                                                  [11;1H~                                                                                  [12;1H~                                                                                  [13;1H~                                                                                  [14;1H~                                                                                  [15;1H~                                                                                  [16;1H~                                                                                  [17;1H~                                                                                  [18;1H~                                                                                  [19;1H~                                                                                  [20;1H~                                                                                  [21;1H~                                                                                  [22;1H~                                                                                  [23;1H~                                                                                  [24;1H~                                                                                  [25;1H~                                                                                  [26;1H~                                                                                  [27;1H~                                                                                  [28;1H~                                                                                  [29;1H~                                                                                  [30;1H~                                                                                  [31;1H~                                                                                  [32;1H~                                                                                  [33;1H~                                                                                  [34;1H~                                                                                  [35;1H~                                                                                  [36;1H~                                                                                  [37;1H~                                                                                  [38;1H~                                                                                  [39;1H~                                                                                  [40;1H~                                                                                  [41;1H~                                                                                  [42;1H~                                                                                  [43;1H~                                                                                  [44;1H~                                                                                  [1;1H[?12l[?25h[?25l[m[45;1H[1m-- INSERT --[m[45;13H[K[1;1H[?12l[?25h[?25l#!/bin/bash[2;1H[K[3;1Hcheck() {[3;10H[K[4;1H    return 0[4;13H[K[5;1H}[5;2H[K[6;1H[K[7;1Hdepends() {[7;12H[K[8;1H    return 0[8;13H[K[9;1H}[9;2H[K[10;1H[K[11;1Hinstall() {[11;12H[K[12;1H    inst_hook cleanup 00 "${moddir}/test.sh"[12;45H[K[13;1H}[13;2H[K[13;2H[?12l[?25h[45;1H[K[13;1H[?25l[?12l[?25h[?25l[45;1H:[?12l[?25hwq[?25l"module-setup.sh" 13L, 126C written
+[?1l>[?12l[?25h[?1049l]0;root@otuslinux:/usr/lib/dracut/modules.d/01test[root@otuslinux 01test]# mkinitrd -f -v /boot/initramfs-$(uname -r).img $(uname -r) [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K)
+Executing: /sbin/dracut -f -v /boot/initramfs-3.10.0-957.12.2.el7.x86_64.img 3.10.0-957.12.2.el7.x86_64
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'plymouth' will not be installed, because command 'plymouthd' could not be found!
+dracut module 'plymouth' will not be installed, because command 'plymouth' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'lvm' will not be installed, because command 'lvm' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'lvm' will not be installed, because command 'lvm' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+*** Including module: bash ***
+*** Including module: test ***
+*** Including module: nss-softokn ***
+*** Including module: i18n ***
+*** Including module: kernel-modules ***
+Omitting driver floppy
+*** Including module: qemu ***
+*** Including module: rootfs-block ***
+*** Including module: terminfo ***
+*** Including module: udev-rules ***
+Skipping udev rule: 40-redhat-cpu-hotplug.rules
+Skipping udev rule: 91-permissions.rules
+*** Including module: biosdevname ***
+*** Including module: systemd ***
+*** Including module: usrmount ***
+*** Including module: base ***
+*** Including module: fs-lib ***
+*** Including module: shutdown ***
+*** Including modules done ***
+*** Installing kernel module dependencies and firmware ***
+*** Installing kernel module dependencies and firmware done ***
+*** Resolving executable dependencies ***
+*** Resolving executable dependencies done***
+*** Hardlinking files ***
+*** Hardlinking files done ***
+*** Stripping files ***
+*** Stripping files done ***
+*** Generating early-microcode cpio image contents ***
+*** No early-microcode cpio image needed ***
+*** Store current command line parameters ***
+*** Creating image file ***
+*** Creating image file done ***
+*** Creating initramfs image file '/boot/initramfs-3.10.0-957.12.2.el7.x86_64.img' done ***
+]0;root@otuslinux:/usr/lib/dracut/modules.d/01test[root@otuslinux 01test]# lsinitrd -m /boot/initramfs-$(uname -r).img | grep test
+[01;31m[Ktest[m[K
+]0;root@otuslinux:/usr/lib/dracut/modules.d/01test[root@otuslinux 01test]# vi /boot//g[K[Kgrub2/grub.cfg 
+[?1049h[?1h=[1;45r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[45;1H"/boot/grub2/grub.cfg" 127L, 3399C[1;1H#
+# DO NOT EDIT THIS FILE
+#
+# It is automatically generated by grub2-mkconfig using templates
+# from /etc/grub.d and settings from /etc/default/grub
+#
+
+### BEGIN /etc/grub.d/00_header ###
+set pager=1
+
+if [ -s $prefix/grubenv ]; then
+  load_env
+fi
+if [ "${next_entry}" ] ; then
+   set default="${next_entry}"
+   set next_entry=
+   save_env next_entry
+   set boot_once=true
+else
+   set default="${saved_entry}"
+fi
+
+if [ x"${feature_menuentry_id}" = xy ]; then
+  menuentry_id_option="--id"
+else
+  menuentry_id_option=""
+fi
+
+export menuentry_id_option
+
+if [ "${prev_saved_entry}" ]; then
+  set saved_entry="${prev_saved_entry}"
+  save_env saved_entry
+  set prev_saved_entry=
+  save_env prev_saved_entry
+  set boot_once=true
+fi
+
+function savedefault {
+  if [ -z "${boot_once}" ]; then
+    saved_entry="${chosen}"
+    save_env saved_entry
+  fi
+}[1;1H[?12l[?25h[?25l[45;1H[K[45;1H/[?12l[?25hquiet[?25l[31msearch hit BOTTOM, continuing at TOP[m[97m[41mE486: Pattern not found: quiet[m[45;31H[K[1;1H[?12l[?25h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[?25l[1;44r[44;1H
+[1;45r[45;1H[K[44;1H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1Hfunction load_video {[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;3Hif [ x$feature_all_video_module = xy ]; then[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;5Hinsmod all_video[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;3Helse[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;5Hinsmod efi_gop[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;5Hinsmod efi_uga[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;5Hinsmod ieee1275_fb[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;5Hinsmod vbe[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;5Hinsmod vga[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;5Hinsmod video_bochs[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;5Hinsmod video_cirrus[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;3Hfi[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H}[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1Hterminal_output console[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1Hif [ x$feature_timeout_style = xy ] ; then[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;3Hset timeout_style=menu[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;3Hset timeout=1[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H# Fallback normal timeout code in case the timeout_style feature is[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H# unavailable.[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1Helse[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;3Hset timeout=1[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1Hfi[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### END /etc/grub.d/00_header ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### BEGIN /etc/grub.d/00_tuned ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1Hset tuned_params=""[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1Hset tuned_initrd=""[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### END /etc/grub.d/00_tuned ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### BEGIN /etc/grub.d/01_users ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1Hif [ -f ${prefix}/user.cfg ]; then[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;3Hsource ${prefix}/user.cfg[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;3Hif [ -n "${GRUB2_PASSWORD}" ]; then[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;5Hset superusers="root"[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;5Hexport superusers[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;5Hpassword_pbkdf2 root ${GRUB2_PASSWORD}[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;3Hfi[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1Hfi[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### END /etc/grub.d/01_users ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### BEGIN /etc/grub.d/10_linux ###[?12l[?25h[?25l[1;44r[1;1H[3M[1;45r[42;1Hmenuentry 'CentOS Linux (3.10.0-957.12.2.el7.x86_64) 7 (Core)' --class centos --claa[43;1Hss gnu-linux --class gnu --class os --unrestricted $menuentry_id_option 'gnulinux-33[44;1H.10.0-957.12.2.el7.x86_64-advanced-8ac075e3-1124-4bb6-bef7-a6811bf8b870' {[42;1H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;9Hload_video[44;8H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;9Hset gfxpayload=keep[44;8H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;9Hinsmod gzio[44;8H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;9Hinsmod part_msdos[44;8H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;9Hinsmod xfs[44;8H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;9Hset root='hd0,msdos1'[44;8H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;9Hif [ x$feature_platform_search_hint = xy ]; then[44;8H[?12l[?25h[?25l[1;44r[1;1H[2M[1;45r[43;11Hsearch --no-floppy --fs-uuid --set=root --hint='hd0,msdos1'  8ac075e3-1122[44;1H4-4bb6-bef7-a6811bf8b870[43;8H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;9Helse[?12l[?25h[?25l[1;44r[1;1H[2M[1;45r[43;11Hsearch --no-floppy --fs-uuid --set=root 8ac075e3-1124-4bb6-bef7-a6811bf8bb[44;1H870[43;8H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;9Hfi[?12l[?25h[?25l[1;44r[1;1H[3M[1;45r[42;9Hlinux16 /boot/vmlinuz-3.10.0-957.12.2.el7.x86_64 root=UUID=8ac075e3-1124-4bb[43;1Hb6-bef7-a6811bf8b870 ro no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnaa[44;1Hmes=0 biosdevname=0 elevator=noop crashkernel=auto LANG=en_US.UTF-8[42;8H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;9Hinitrd16 /boot/initramfs-3.10.0-957.12.2.el7.x86_64.img[44;8H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H}[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### END /etc/grub.d/10_linux ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### BEGIN /etc/grub.d/20_linux_xen ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### END /etc/grub.d/20_linux_xen ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### BEGIN /etc/grub.d/20_ppc_terminfo ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### END /etc/grub.d/20_ppc_terminfo ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### BEGIN /etc/grub.d/30_os-prober ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### END /etc/grub.d/30_os-prober ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### BEGIN /etc/grub.d/40_custom ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H# This file provides an easy way to add custom menu entries.  Simply type the[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H# menu entries you want to add after this comment.  Be careful not to change[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H# the 'exec tail' line above.[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### END /etc/grub.d/40_custom ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1H### BEGIN /etc/grub.d/41_custom ###[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;1Hif [ -f  ${config_directory}/custom.cfg ]; then[?12l[?25h[?25l[1;44r[44;1H
+[1;45r[44;3Hsource ${config_directory}/custom.cfg[?12l[?25h[43;1H[42;1H[41;1H[40;1H[39;1H[38;1H[37;1H[36;1H[35;1H[34;1H[33;1H[32;1H[31;1H[30;1H[29;1H[28;1H[27;1H[26;1H[25;1H[24;1H[23;1H[22;8H[19;8H[?25l[45;1H/[?12l[?25hrghb[?25l[31msearch hit BOTTOM, continuing at TOP[m[97m[41mE486: Pattern not found: rghb[m[45;30H[K[19;8H[?12l[?25h[?25l[45;1H[K[45;1H:[?12l[?25hq[?25l[45;1H[K[45;1H[?1l>[?12l[?25h[?1049l]0;root@otuslinux:/usr/lib/dracut/modules.d/01test[root@otuslinux 01test]# exit
+
+Script done on Сб 30 ноя 2019 17:14:22

@@ -1,0 +1,20 @@
+---
+- name: log server udp
+  lineinfile:
+    path: /etc/rsyslog.conf
+    regexp: '^#\$ModLoad imudp'
+    line: '$ModLoad imudp'
+
+- name: log server port
+  lineinfile:
+    path: /etc/rsyslog.conf
+    regexp: '^#\$UDPServerRun 514'
+    line: '$UDPServerRun 514'
+  notify: restart rsyslog
+
+- name: configure auditd
+  lineinfile:
+    path: /etc/audit/auditd.conf
+    regexp: '^##(tcp_listen_port = 60)$'
+    line: 'tcp_listen_port = 60'
+  notify: restart audit

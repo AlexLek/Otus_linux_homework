@@ -1,0 +1,75 @@
+---
+- name: install epel-release
+  yum:       
+    name: epel-release   
+    state: latest
+
+- name: install nginx
+  yum:
+    name: nginx
+    state: present
+  notify: restart nginx
+
+- name: all critical logs to log server
+  lineinfile: 
+        path: /etc/rsyslog.conf 
+        insertafter: "# ### begin forwarding rule ###" 
+        line: "*.crit @192.168.11.102:514"
+  notify: restart rsyslog
+
+- name: nginx all access logs to log server
+  lineinfile:
+    path: /etc/nginx/nginx.conf
+    state: present
+    regexp: 'access_log  /var/log/nginx/access.log  main;'
+    line: '    access_log syslog:server=192.168.11.102:514,facility=local7,tag=nginx,severity=info main;'
+  notify: restart nginx
+
+- name: nginx critical logs save locally
+  lineinfile:
+    path: /etc/nginx/nginx.conf
+    state: present
+    regexp: '(error_log /var/log/nginx/error.log);'
+    line: 'error_log /var/log/nginx/error.log crit;'
+  notify: restart nginx
+
+- name: nginx all errors to log server
+  lineinfile:
+    path: /etc/nginx/nginx.conf
+    state: present
+    insertafter: '^error_log.*'
+    line: 'error_log syslog:server=192.168.11.102:514,facility=local6,tag=nginx_error;'
+  notify: restart nginx
+
+- name: install audisp (needed to send logs)
+  yum:
+    name: audispd-plugins
+    state: present
+
+- name: disable local auditd logs
+  lineinfile:
+    path: /etc/audit/auditd.conf
+    line: 'write_logs = no'
+    state: present
+  notify: restart audit
+ 
+- name: enable auditd remote logs
+  lineinfile:
+    path: /etc/audisp/plugins.d/au-remote.conf
+    regexp: 'active = no'
+    line: 'active = yes'
+  notify: restart audit
+
+- name: set log server
+  lineinfile:
+    path: /etc/audisp/audisp-remote.conf
+    regexp: 'remote_server ='
+    line: 'remote_server = 192.168.11.102'
+  notify: restart audit
+
+- name: Ansible create file with content example
+  copy:
+    dest: "/etc/audit/rules.d/nginx_changes.rules"
+    content: |
+        -w /etc/nginx/ -p a -k nginx_changes
+  notify: restart audit

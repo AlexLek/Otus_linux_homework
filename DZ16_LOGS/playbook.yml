@@ -1,0 +1,16 @@
+--- 
+# Runs only on web 
+ - hosts: web   
+   become: true   
+   gather_facts: false   
+   roles:
+        - nginx
+
+
+
+# Runs only on log      
+ - hosts: log   
+   become: true   
+   gather_facts: false   
+   roles:
+        - log_server

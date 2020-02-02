@@ -1,12 +1,16 @@
 #!/bin/bash
 if [[ $1 = open ]]; then
     nmap -p 8881 192.168.255.1 >/dev/null
+    sleep 1
     nmap -p 7777 192.168.255.1 >/dev/null
+    sleep 1
     nmap -p 9991 192.168.255.1 >/dev/null
     echo "opened"
 elif [[ $1 = close ]]; then
     nmap -p 7778 192.168.255.1 >/dev/null
+    sleep 1
     nmap -p 9992 192.168.255.1 >/dev/null
+    sleep 1
     nmap -p 8883 192.168.255.1 >/dev/null
     echo "closed"
 else

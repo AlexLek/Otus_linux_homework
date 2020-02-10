@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.hostname = "webserver"
+
+  config.vm.box = "centos/7"
+  config.vm.box_check_update = false
+
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.provision "file", source: "./nginx.conf", destination: "nginx.conf"
+  config.vm.provision "shell", run: "always", inline: <<-SHELL
+	yum install -y epel-release
+        yum install -y nginx
+	cp /home/vagrant/nginx.conf /etc/nginx/nginx.conf
+        systemctl restart nginx
+       SHELL
+
+#  config.vm.provision "ansible" do |ansible|
+#    ansible.playbook = "provision.yml"
+#  end
+end
